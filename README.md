@@ -4,8 +4,8 @@ Note|Description
 :----|:----
 Initial macOS Support|macOS 10.15, Catalina.
 
-- Opencore version: 0.8.6
-- Release date: 07/11/2022
+- Opencore version: 0.8.7
+- Release date: 06/12/2022 (late a day)
 
 # Basic Steps
 
@@ -152,7 +152,9 @@ iMacPro1,1|Because GPU integrated in 13th gen without support for Apple.
 	- If your board didn't ship with the Intel I225 NIC, there's no reason to add this entry.
 	- If you get a kernel panic on the `AppleIntelI210Ethernet` kext, your Ethernet's path is likely `PciRoot(0x0)/Pci(0x1C,0x4)/Pci(0x0,0x0)`.
 	- Please **`ENABLE`** Patch for i225 on `Kernel > Patch`.
-	- Please add `dk.e1000=0` in `boot-args`.
+	- for macOS Monterey 12.2.1 and below, please add `dk.e1000=0` in `boot-args`.
+	- for macOS Monterey 12.3 or newer, please add `e1000=0` in `boot-args`.
+	- for macOS Ventura, please add `e1000=0` in `boot-args` and add Kext [AppleIntelI210Ethernet.kext](https://github.com/luchina-gabriel/youtube-files/raw/main/AppleIntelI210Ethernet.kext.zip)
 
 ### GPU-Specific `boot-args`
 Parameter|Description
